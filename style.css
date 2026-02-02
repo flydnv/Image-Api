@@ -1,49 +1,102 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    text-decoration:none;
-    list-style:none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
-body{
-    background-color: antiquewhite;
+body {
+  background-color: antiquewhite;
+}
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 #pictures {
-    max-width: 62%;
-    margin: 0 auto;
-    /* border: 1px solid red; */
-    padding: 5px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 10px;
+  width: 100%;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-#pictures .images{
-    width: 250px;
-    height: 200px;
-    object-fit: cover;
+#pictures .images {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
 }
 .pagination {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .pagination li {
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
-    font-size: large;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 2px 1px;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  font-size: large;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 2px 1px;
 }
-.pagination li:hover{
-    color: white;
-    background-color: black;
-    transition: 0.2s;
+.pagination li:hover {
+  color: white;
+  background-color: black;
+  transition: 0.2s;
 }
 .pagination .active {
-    background-color: black;
-    color: #fff;
-
+  background-color: black;
+  color: #fff;
+}
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+}
+.modal_container .modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 10px;
+  transform: translateY(70%);
+  transition: 0.4s;
+  width: 400px;
+  margin: 0 auto;
+}
+.modal__container.active .modal {
+  transform: translateY(0);
+}
+.modal_pict {
+  width: 200px;
+  height: 200px;
+}
+.modal_pict img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal_container.active {
+  opacity: 1;
+  visibility: visible;
 }

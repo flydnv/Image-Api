@@ -2,6 +2,11 @@ let pictures = [];
 let pictPerPage = 3;
 let totalPageCount = 0;
 let currentPage = 1;
+const modalContainer = document.querySelector(".modal_container");
+const modal = document.querySelector(".modal");
+const modalPictImg = document.querySelector(".modal_pict img");
+const modal_h3 = document.querySelector(".modal_about h3");
+const modal_span = document.querySelector(".modal_about span");
 const section = document.querySelector("#pictures");
 const pagination = document.querySelector(".pagination");
 const orderSelect = document.querySelector("#orderBy");
@@ -49,8 +54,21 @@ const showPictures = () => {
       img.setAttribute("src", item.largeImageURL);
       img.classList.add("images");
       section.append(img);
+      img.addEventListener("click", (e) => {
+        modalContainer.classList.add("active");
+        modalPictImg.setAttribute("src", item.largeImageURL);
+        // let tags = item.tags.replace("")
+        modal_h3.textContent = `Tags:${item.tags.slice(0, 45)}...`;
+        modal_span.innerHTML = `Likes:${item.likes} <br> Downloads: ${item.downloads} <br> Views: ${item.views}`;
+      });
     });
 };
+modalContainer.addEventListener("click", () => {
+  modalContainer.classList.remove("active");
+});
+modalContainer.querySelector(".modal").addEventListener("click", (e) => {
+  e.stopPropagation();
+});
 
 const getPictures = async () => {
   pictures = await fetch(
